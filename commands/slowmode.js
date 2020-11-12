@@ -7,7 +7,7 @@ module.exports = {
        if(!message.member.roles.cache.some(role =>["Owner! 👑", "Head Community Moderator"].includes(role.name))){
         return message.channel.send({embed: {
             color: 16733013,
-            footer: 'Cafe Mezlo | User Management',
+            footer: 'Berry | Moderation',
             description: "You don't have the requred role(s) to use this command.",
             author: {
                 name: message.author.tag,
@@ -21,7 +21,7 @@ module.exports = {
           description: "Please enter a time for the slowmode.",
           timestamp: new Date(),
           footer: {
-            text: "Skaddle | Moderation"
+            text: "Berry | Moderation"
           }
         }})
         if(args[0] === amount + "s") {
@@ -33,7 +33,7 @@ module.exports = {
           description: "This channels slowmode is now " + amount + " second(s).",
           timestamp: new Date(),
           footer: {
-            text: "Skaddle | Moderation"
+            text: "Berry | Moderation"
           }
         }})
         return
@@ -44,12 +44,12 @@ module.exports = {
           description: "This channels slowmode is now " + amount + " second(s).",
           timestamp: new Date(),
           footer: {
-            text: "Skaddle | Moderation"
+            text: "Berry | Moderation"
           }
         }})
         return }
-    } if(args[0] === amount + "mins") {
-        message.channel.setRateLimitPerUser(amount * 60)
+    } if(args[0] === amount + "m") {
+        message.channel.setRateLimitPerUser(amount * 60 * 1)
         if(amount > 1) {
         message.channel.send({embed: {
           color: 3066993,
@@ -57,7 +57,7 @@ module.exports = {
           description: "This channels slowmode is now " + amount + " minute(s).",
           timestamp: new Date(),
           footer: {
-            text: "Skaddle | Moderation"
+            text: "Berry | Moderation"
           }
         }})
         return
@@ -68,7 +68,7 @@ module.exports = {
           description: "This channels slowmode is now " + amount + " minute(s).",
           timestamp: new Date(),
           footer: {
-            text: "Skaddle | Moderation"
+            text: "Berry | Moderation"
           }
         }})  
              
@@ -83,7 +83,7 @@ module.exports = {
           description: "This channels slowmode is now " + amount + " hour(s).",
           timestamp: new Date(),
           footer: {
-            text: "Skaddle | Moderation"
+            text: "Berry | Moderation"
           }
         }})
         return
@@ -94,7 +94,7 @@ module.exports = {
           description: "This channels slowmode is now " + amount + " hour(s).",
           timestamp: new Date(),
           footer: {
-            text: "Skaddle | Moderation"
+            text: "Berry | Moderation"
           }
         }})
         return}
@@ -105,7 +105,7 @@ module.exports = {
           description: "You can only set seconds(s), minutes(m) and hours(h).",
           timestamp: new Date(),
           footer: {
-            text: "Skaddle | Moderation"
+            text: "Berry | Moderation"
           }
         }})
     }

@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const onchannel = 775663464668069909
 
 app.get('/', (request, response) => {
      response.sendStatus(200);
@@ -103,6 +104,7 @@ client.on('ready', async () => {
       const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); 
       client.user.setActivity(activities_list[index], {type: type_list[index]}); 
   }, 10000);
+
 })
 
 client.on('message', async (message) => {
@@ -117,27 +119,24 @@ client.on('message', async (message) => {
 });
 
 
-
-  client.on('guildMemberAdd', member => { // when a member joins
-    const channel = member.guild.channels.cache.find(ch => ch.name === 'general'); // defining the channel to send the message in, simple. change the channel name to ur welcome channel name exact
-    if (!channel) return; // if there is sno such channel, ignore the rest of the code
-  channel.send('<@' + member.user.id + '>,')
-  
-})
-
-
 client.on('guildMemberAdd', member => { // when a member joins
     const channel = member.guild.channels.cache.find(ch => ch.name === 'general'); // defining the channel to send the message in, simple. change the channel name to ur welcome channel name exact
     if (!channel) return; // if there is sno such channel, ignore the rest of the code
-    const embed = new Discord.MessageEmbed() // just making the embed :)
-
-    .setTitle('Welcome!')
-    .setDescription('☕ Welcome to Skaddle, <@'
-     + member.user.id + '>! Because you are seeing this, it means you have already verified and ready to start your journey here at Skaddle!\n\n🤔 If you have any questions, feel free to open a ticket in <#775829427430227978>!\n\nℹ️ Make sure to check out the rules and other information in <#775664259895525406>\n\n*Signed,*\n***Skaddle Support***')
-    .setFooter('Skaddle | Order System')
-    .setColor('RANDOM')
-    channel.send(embed) // sending embed
+  channel.send({
+    content: `<@${member.user.id}>,`,
+    embed: {
+      title: "Welcome To Bery!",
+    description: 'Welcome to Berry, <@'
+     + member.user.id + '>! Because you are seeing this, it means you have already verified and ready to start your journey here at Berry the best bot company out there!\n\n🤔 If you have any questions, feel free to open a ticket using the ``!new`` command.\n\n🤩 Bot purchase information is located in <#775663449090162698>!\n\nℹ️ Make sure to check out the rules and other information in <#775664259895525406>\n\n\n*Signed,*\n***Berry***',
+     footer: {
+       text: "Berry | Official Bot"
+     },
+     color: "RANDOM"
+    }
   });
+
+  
+})
 
   client.on('message', async (message) => {
   const mention = message.mentions.members.first()
@@ -148,4 +147,51 @@ client.on('guildMemberAdd', member => { // when a member joins
             })
 })
 
+
+
+
+client.on("messageDelete", async message =>{
+
+  const loggingEmbed = new Discord.MessageEmbed()
+
+.setTitle("Message Deleted")
+.setColor("RED")
+.setThumbnail(message.avatarURL)
+.addField("Message:", message)
+.addField("Deleted by: ", message.author.tag)
+.addField("Channel Deleted In: ", message.channel)
+.setTimestamp()
+.setFooter("Berry | Moderation");
+
+
+ if(process.env.messagelogchannel === 'false') return;
+    let messagelogchannel = await message.guild.channels.cache.get(process.env.messagelogchannel);
+
+messagelogchannel.send(loggingEmbed);
+
+})
+
+client.on("messageUpdate", async(oldMessage, newMessage) =>{
+  if(oldMessage.content === newMessage.content){
+    return;
+  }
+
+  const editedEmbed = new Discord.MessageEmbed()
+  .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
+  .setThumbnail(oldMessage.author.avatarURL)
+  .setColor("BLUE")
+  .setDescription("A message from a user was edited.")
+  .addField("Before", oldMessage.content, true)
+  .addField("After", newMessage.content, true)
+  .addField("In Channel", newMessage.channel)
+  .setTimestamp()
+  .setFooter("Bery | Moderation")
+
+ if(process.env.messagelogchannel === 'false') return;
+    let messagelogchannel = await message.guild.channels.cache.get(process.env.messagelogchannel);
+
+messagelogchannel.send(editedEmbed);
+
+
+})
 client.login(process.env.token);

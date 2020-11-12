@@ -16,12 +16,12 @@ const Discord = require('discord.js');
 					})
 					.catch(console.error);
 			}
-			else if (amount <= 1 || amount >= 100) {
+			else if (amount <= 1 || amount >= 52) {
 				message.channel.bulkDelete(1);
 				const limit = new Discord.MessageEmbed()
 					.setColor('FF0000')
 					.setTitle('Limit Exceeded!')
-					.setDescription(`${message.author}, Maximum Purge limit is 98`);
+					.setDescription(`${message.author}, Maximum Purge limit is 50`);
 				return message.channel.send(limit)
 					.then(msg => {
 						msg.delete({ timeout: 5000 });

@@ -1,7 +1,7 @@
 const { MessageFlags } = require("discord.js");
  
 exports.run = async (client, message, args) => {
-if(!message.member.roles.cache.some(role =>["Owner! 👑", "Co-Owner! 👑"].includes(role.name))){
+if(!message.member.roles.cache.some(role =>["Owner! 👑", "Co-owner 👑"].includes(role.name))){
 console.log("No! <3")
 return;
 }
@@ -15,6 +15,6 @@ msg = args.slice(1).join(" ");
 textChannel.send(msg)
 } else {
 msg = args.join(" ");
-message.channel.send(msg)
+return message.channel.send(msg)
 }
 }
