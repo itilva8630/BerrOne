@@ -10,6 +10,10 @@ exports.run = async (client, message, args) => {
         name: "<:question:776517623302848592>   Need Help?",
         value: "Feel free to click on the blue text above for our command list! :)\n\n"
       },
+    {
+      name: "Bot Status",
+      value: "<:status_normal:776517623169024060> - Preforming normal. If you detect a bug or if your bot keeps going offline, please let us know in our [Support Server](https://discord.gg/cbRSPFc6TV).\n[Click here](https://berrystatus.statuspage.io/) to access our Statuspage."
+  },
       {
         name: "<:microphone:776517622938206229>   Bot Information",
       value: "This is an official support bot! Therefore, it has access to all the commands. This bot is powered by [Berry,](https://discord.gg/cbRSPFc6TV) an all in 1 customized bot."

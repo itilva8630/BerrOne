@@ -89,7 +89,8 @@ client.on('ready', async () => {
     "with staff!",
     "with my systems",
     "the developers create new bots!",
-    "for !help"
+    "for !help",
+    "two custom bots"
     ];
  const type_list = [
    "PLAYING",
@@ -97,6 +98,7 @@ client.on('ready', async () => {
    "WATCHING",
    "PLAYING",
    "PLAYING",
+   "WATCHING",
    "WATCHING",
    "WATCHING"
 ];
@@ -120,14 +122,14 @@ client.on('message', async (message) => {
 
 
 client.on('guildMemberAdd', member => { // when a member joins
-    const channel = member.guild.channels.cache.find(ch => ch.name === 'general'); // defining the channel to send the message in, simple. change the channel name to ur welcome channel name exact
+    const channel = member.guild.channels.cache.find(ch => ch.name === '💭-general'); // defining the channel to send the message in, simple. change the channel name to ur welcome channel name exact
     if (!channel) return; // if there is sno such channel, ignore the rest of the code
   channel.send({
     content: `<@${member.user.id}>,`,
     embed: {
       title: "Welcome To Bery!",
     description: 'Welcome to Berry, <@'
-     + member.user.id + '>! Because you are seeing this, it means you have already verified and ready to start your journey here at Berry the best bot company out there!\n\n🤔 If you have any questions, feel free to open a ticket using the ``!new`` command.\n\n🤩 Bot purchase information is located in <#775663449090162698>!\n\nℹ️ Make sure to check out the rules and other information in <#775664259895525406>\n\n\n*Signed,*\n***Berry***',
+     + member.user.id + '>! Because you are seeing this, it means you have already verified and ready to start your journey here at Berry the best bot company out there!\n\n🤔 If you have any questions, feel free to open a ticket using the ``!new`` command in <#776509534453235712>!.\n\n🤩 Bot purchase information is located in <#775663449090162698>!\n\nℹ️ Make sure to check out the rules and other information in <#775664259895525406>\n\n\n*Signed,*\n***Berry***',
      footer: {
        text: "Berry | Official Bot"
      },
@@ -136,15 +138,6 @@ client.on('guildMemberAdd', member => { // when a member joins
   });
 
   
-})
-
-  client.on('message', async (message) => {
-  const mention = message.mentions.members.first()
-   if(mention.id === client.user.id) return message.react('😁'),
-    message.channel.send("Hiya! Need some help? Run over to <#775800598364422152> and say ``!help``! This message will be deleted in 10 seconds. :)")
-    .then(msg => {
-                msg.delete({ timeout: 10000 /*time unitl delete in milliseconds*/});
-            })
 })
 
 

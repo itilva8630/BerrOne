@@ -1,15 +1,12 @@
-exports.run = async (client, message, args) => {
-
 const Discord = require('discord.js')
 
-module.exports = {
-    name: "new",
-    description: "Create a new ticket.",
-    execute(message, args){
-        var number = Math.floor(Math.random() * 9999) + 1;
-        var user = message.author
-        var supportteamroleID = '776217783486251069'
-        var logchannel = message.guild.channels.cache.find((x) => (x.name === "ticket-logs"))
+exports.run = async (client, message, args) => {
+
+  //  name: "new",
+        const number = Math.floor(Math.random() * 9999) + 1;
+        const user = message.author
+        const supportteamroleID = '776217783486251069'
+        const logchannel = message.guild.channels.cache.find((x) => (x.name === "ticket-logs"))
 
         const ticketreason = args.slice(0).join(" ")
 
@@ -86,5 +83,3 @@ module.exports = {
 
 
     }  
-}
-}

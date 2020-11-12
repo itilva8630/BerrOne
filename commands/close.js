@@ -1,11 +1,6 @@
+const Discord = require('discord.js')
+
 exports.run = async (client, message, args) => {
-
-const Discord = require('discord.js');
-
-module.exports = {
-    name: "close",
-    description: "Close a ticket.",
-    execute(message, args) {
         const channel = message.channel
         const channelname = message.channel.name
         var logchannel = message.guild.channels.cache.find((x) => (x.name === "ticket-logs"))
@@ -51,5 +46,4 @@ module.exports = {
             }
         }
     }
-}
-}
+

@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
   const uptime = time(client.uptime)
   message.channel.send({embed: {
     color: "RANDOM",
-    title: "uptime Time",
+    title: "Up Time",
     description: `The bot has been up for about ${uptime}.`,
     footer: {
       text: client.user.username,
